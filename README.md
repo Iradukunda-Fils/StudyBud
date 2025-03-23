@@ -1,30 +1,28 @@
 <div align="center">
 <img width="30%" src="https://user-images.githubusercontent.com/72341453/134747028-7e2d90cc-a92f-4f66-815e-54a0d50cca54.PNG">
 
-# StudyBuddy
+# Iga_Pro
 </div>
 
 ### Cloning the repository
 
 --> Clone the repository using the command below :
 ```bash
-git clone https://github.com/divanov11/StudyBud.git
+git clone https://github.com/divanov11/Iga_Pro.git
 
 ```
 
 --> Move into the directory where we have the project files : 
 ```bash
-cd StudyBud
+cd Iga_Pro
 
 ```
 
 --> Create a virtual environment :
 ```bash
-# Let's install virtualenv first
-pip install virtualenv
 
 # Then we create our virtual environment
-virtualenv envname
+venv envname
 
 ```
 

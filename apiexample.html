@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
-
+<style>
+    #rooms-container{
+        display: flexbox;
+        -ms-flex-flow: wrap;
+    }
+    .item{
+        width: calc(100% / 3);
+        height: calc(100% / 5);
+        border: 1px solid palevioletred;
+        padding: 20px;
+        margin-top: 10px;
+    }
+</style>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -19,7 +31,7 @@
 </body>
 
 <script>
-    let roomsContainer = document.getElementById('rooms-container')
+    let roomsContainer = document.querySelector('#rooms-container')
 
     let getRooms = async () => {
         let response = await fetch('http://127.0.0.1:8000/api/rooms/')
@@ -28,7 +40,7 @@
         for (let i = 0; rooms.length > i; i++) {
             let room = rooms[i]
 
-            let row = `<div>
+            let row = `<div class="item">
                             <h3>${room.name}</h3>
                         </div>`
 
@@ -36,7 +48,9 @@
         }
     }
 
+
     getRooms()
+    
 </script>
 
 </html>

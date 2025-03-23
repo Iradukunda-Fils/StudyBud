@@ -54,9 +54,11 @@ def registerPage(request):
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            name = user.username
             user.username = user.username.lower()
             user.save()
             login(request, user)
+            messages.success(request, f"Your welcome, {name}! The registration pass successfully!")
             return redirect('home')
         else:
             messages.error(request, 'An error occurred during registration')
@@ -65,7 +67,7 @@ def registerPage(request):
 
 
 def home(request):
-    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    q = request.GET.get('q', "")
 
     rooms = Room.objects.filter(
         Q(topic__name__icontains=q) |
@@ -188,6 +190,7 @@ def updateUser(request):
         form = UserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
+            messages.success(request, 'User account was updated successfully!')
             return redirect('user-profile', pk=user.id)
 
     return render(request, 'base/update-user.html', {'form': form})
